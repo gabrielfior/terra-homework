@@ -13,9 +13,9 @@
       }
     },
     "cw20_token": {
-      "codeId": "67745",
+      "codeId": "67781",
       "contractAddresses": {
-        "default": "terra1qzsr47twxtnh5wrsevw4r7acwg0hyrpgqyxfk3"
+        "default": "terra1y5xsyz35z8npcwsvjaspttswx4k9vptqj4wjjc"
       }
     },
     "swap": {
