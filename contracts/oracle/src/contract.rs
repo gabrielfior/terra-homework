@@ -1,4 +1,7 @@
 #[cfg(not(feature = "library"))]
+use cosmwasm_std::to_binary;
+use crate::state::State;
+use crate::state::STATE;
 use cosmwasm_std::entry_point;
 use cosmwasm_std::{
     Binary, Deps, DepsMut, Env, MessageInfo, Response, StdError, StdResult,
@@ -22,8 +25,17 @@ pub fn instantiate(
 ) -> Result<Response, ContractError> {
     set_contract_version(deps.storage, CONTRACT_NAME, CONTRACT_VERSION)?;
 
-    // TODO: instantiate contract
-    Ok(Response::new())
+    let state = State {
+        owner: _info.sender.clone(),
+        price: _msg.price.clone(),
+    };
+
+    STATE.save(deps.storage, &state)?;
+
+    Ok(Response::new()
+        .add_attribute("method", "instantiate")
+        .add_attribute("owner", _info.sender)
+        .add_attribute("price", _msg.price.to_string()))
 }
 
 #[cfg_attr(not(feature = "library"), entry_point)]
@@ -33,14 +45,31 @@ pub fn execute(
     _info: MessageInfo,
     _msg: ExecuteMsg,
 ) -> Result<Response, ContractError> {
-    //TODO: execute try_update_price
-    Ok(Response::new())
+    match _msg {
+        ExecuteMsg::UpdatePrice {price} => try_updating_price(_deps, _info, price)
+    }
+}
+
+pub fn try_updating_price(deps: DepsMut, info: MessageInfo, price: u64) -> Result<Response, ContractError> {
+    
+    STATE.update(deps.storage, |mut state| -> Result<_, ContractError> {
+        if info.sender != state.owner {
+            return Err(ContractError::Unauthorized {});
+        }
+        state.price = price;
+        Ok(state)
+    })?;
+    Ok(Response::new().add_attribute("method", "try_updating_price"))
 }
 
 #[cfg_attr(not(feature = "library"), entry_point)]
 pub fn query(_deps: Deps, _env: Env, _msg: QueryMsg) -> StdResult<Binary> {
-    // TODO
-    Err(StdError::generic_err("not implemented"))
+    match _msg {
+        QueryMsg::QueryPrice {} => {
+            let state = STATE.load(_deps.storage)?;
+            to_binary(&state.price)
+        },
+    }
 }
 
 #[cfg(test)]
