@@ -1,7 +1,7 @@
 import { MsgSwap, Coin } from "@terra-money/terra.js";
 import { client, wallets } from '../library.js';
 
-let wallet = wallets.wallet1
+let wallet = wallets.wallet_homework;
 let amountToConvert = (1 * 1e6).toFixed(0); // 1 Luna
 
 // Swap Luna to UST.

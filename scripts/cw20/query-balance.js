@@ -1,4 +1,4 @@
-import { lcd, wallets } from '../library.js';
+import { client, wallets } from '../library.js';
 
 import {
   MsgExecuteContract,
@@ -7,10 +7,10 @@ import {
   LCDClient,
 } from "@terra-money/terra.js";
 
-const cw20Contract = "terra1hpajld8zs93md8zrs6sfy42zl0khqpmr07muw0";
-const walletAddress = wallets.wallet1.key.accAddress;
+const cw20Contract = "terra1qzsr47twxtnh5wrsevw4r7acwg0hyrpgqyxfk3";
+const walletAddress = wallets.wallet_homework.key.accAddress;
 
-const response = await lcd.wasm.contractQuery(cw20Contract, { balance: { address: walletAddress }});
+const response = await client.wasm.contractQuery(cw20Contract, { balance: { address: walletAddress }});
 
 console.log(response);
 

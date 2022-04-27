@@ -23,6 +23,9 @@ const wallets = {
   wallet2: client.wallet(new MnemonicKey({
     mnemonic: "warm lucky circle bicycle quote lemon omit one robot include fruit fix coach parrot identify glance foil random fox tornado diagram twist flat picnic",
   })),
+  wallet_homework: client.wallet(new MnemonicKey({
+    mnemonic: "spirit episode doll job guard device vague acquire purity task forum achieve nest expire harvest intact coral sunset agent melt onion supreme wife end",
+  })),
 };
 
 export { client, wallets };
