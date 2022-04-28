@@ -1,3 +1,4 @@
+use cw_controllers::Admin;
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
@@ -11,3 +12,4 @@ pub struct State {
 }
 
 pub const STATE: Item<State> = Item::new("state");
+pub const ADMIN: Admin = Admin::new("admin");
