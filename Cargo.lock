@@ -693,6 +693,7 @@ dependencies = [
  "schemars",
  "serde",
  "shared",
+ "terra-cosmwasm",
  "thiserror",
 ]
 

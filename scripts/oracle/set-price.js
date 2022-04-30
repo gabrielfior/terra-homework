@@ -9,7 +9,7 @@ import {
 
 const oracleAddress = "terra15secglerg8y5setamsws3qnu4fv2ns7200za5j";
 const wallet = wallets.wallet_homework;
-const price = 28;
+const price = 2;
 
 const msg = new MsgExecuteContract(
   wallets.wallet_homework.key.accAddress,

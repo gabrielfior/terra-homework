@@ -17,7 +17,8 @@
             }
           },
           "instantiateMsg": {
-            "token_address": "terra1hpajld8zs93md8zrs6sfy42zl0khqpmr07muw0"
+            "token_address": "terra1y5xsyz35z8npcwsvjaspttswx4k9vptqj4wjjc",
+            "oracle_address": "terra15secglerg8y5setamsws3qnu4fv2ns7200za5j"
         }
         }
       }

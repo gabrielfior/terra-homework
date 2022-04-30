@@ -2,11 +2,11 @@ import { client, wallets } from '../library.js';
 
 import {
   MsgExecuteContract,
-  Coins,
+  Coins, Coin,
 } from "@terra-money/terra.js";
 
-const contract = "terra1f7vnhhk24jmaxp2tdgf906yy980yg3c4h8f05h";
-const wallet = wallets.wallet1;
+const contract = "terra1qcsq770f3hx2g2gsy3y5lqnrrwett9uzplj226";
+const wallet = wallets.wallet_homework;
 
 
 const amount = (0.5 * 1e6).toFixed(0);
@@ -17,7 +17,7 @@ const msg = new MsgExecuteContract(
   {
     buy: {},
   },
-  new Coins({ uluna: amount }),
+  [new Coin("uluna",  amount)],
 );
 
 const tx = await wallet.createAndSignTx({ msgs: [msg] });

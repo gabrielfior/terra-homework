@@ -1,4 +1,3 @@
-use cw_controllers::Admin;
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
@@ -9,7 +8,7 @@ use cw_storage_plus::Item;
 pub struct State {
     pub owner: Addr,
     pub token_address: Addr,
+    pub oracle_address: Addr,
 }
 
 pub const STATE: Item<State> = Item::new("state");
-pub const ADMIN: Admin = Admin::new("admin");
